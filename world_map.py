@@ -1592,8 +1592,8 @@ app.layout = html.Div([
         ],
         style={
             "position": "fixed",
-            "bottom": "20px",
-            "right": "20px",
+            "top": "20px",
+            "left": "20px",
             "width": "300px",
             "background-color": "rgba(240, 240, 240, 0.9)",
             "padding": "10px",
