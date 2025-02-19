@@ -1544,6 +1544,20 @@ country_adaptations.update({
 })
 
 
+country_adaptations["Greenland"] = {
+    "Adaptation Mechanisms": "Extremely light skin adapted to very low UV conditions.",
+    "Historical Context": "Adaptations occurred over centuries in harsh Arctic conditions with minimal sunlight.",
+    "Modern Challenges": "High risk of vitamin D deficiency during prolonged periods of darkness.",
+    "Exceptions": "Population has relatively uniform light skin tones.",
+    "Impact of Lifestyle": "Reliance on vitamin D supplements and traditional diets rich in vitamin D."
+}
+
+# Helper function to format country adaptation info as Markdown
+def format_country_info(country):
+    info = country_adaptations.get(country, {})
+    info_text = "\n\n".join([f"**{key}:** {value}" for key, value in info.items()])
+    return f"### {country}\n\n" + info_text
+
 app.layout = html.Div([
     html.Div(style={'display': 'flex', 'width': '100%'}, children=[
         html.Div(
@@ -1568,7 +1582,27 @@ app.layout = html.Div([
                 })  # Display country info as non-editable text
             ])
         ])
-    ])
+    ]),
+    # Fixed card in the bottom-right corner displaying Russia and Greenland adaptations
+    html.Div(
+        children=[
+            dcc.Markdown(format_country_info("Russia")),
+            html.Hr(),
+            dcc.Markdown(format_country_info("Greenland"))
+        ],
+        style={
+            "position": "fixed",
+            "bottom": "20px",
+            "right": "20px",
+            "width": "300px",
+            "background-color": "rgba(240, 240, 240, 0.9)",
+            "padding": "10px",
+            "border-radius": "8px",
+            "box-shadow": "2px 2px 5px rgba(0,0,0,0.3)",
+            "font-size": "14px",
+            "z-index": "1000"
+        }
+    )
 ])
 
 @app.callback(
