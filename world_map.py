@@ -18,6 +18,7 @@ fig.update_layout(width=900, height=800)  # Set map size for 75% width
 
 # Initialize the Dash app
 app = dash.Dash(__name__)
+server = app.server
 
 country_adaptations = {
     "Australia": {
