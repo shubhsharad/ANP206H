@@ -1565,10 +1565,10 @@ app.layout = html.Div([
             style={'flex': '3', 'display': 'flex', 'justify-content': 'center', 'align-items': 'center', 'margin': '20px'}
         ),
         html.Div(id='info-box', style={
-            'flex': '1', 
-            'display': 'flex', 
-            'justify-content': 'center', 
-            'align-items': 'center', 
+            'flex': '1',
+            'display': 'flex',
+            'justify-content': 'center',
+            'align-items': 'center',
             'padding': '20px',
             'background-color': 'rgba(240, 240, 240, 0.9)',
             'border-radius': '8px'
@@ -1576,34 +1576,25 @@ app.layout = html.Div([
             html.Div(id='info-content', children=[
                 html.H2(id='country-name', style={'text-align': 'center', 'font-size': '24px', 'margin-bottom': '10px'}),
                 html.Div(id='country-info', style={
-                    'text-align': 'center', 
-                    'font-size': '18px', 
+                    'text-align': 'center',
+                    'font-size': '18px',
                     'padding': '10px'
-                })  # Display country info as non-editable text
+                })
             ])
         ])
     ]),
-    # Fixed card in the bottom-right corner displaying Russia and Greenland adaptations
-    html.Div(
-        children=[
-            dcc.Markdown(format_country_info("Russia")),
-            html.Hr(),
-            dcc.Markdown(format_country_info("Greenland"))
-        ],
-        style={
-            "position": "fixed",
-            "top": "20px",
-            "left": "20px",
-            "width": "300px",
-            "background-color": "rgba(240, 240, 240, 0.9)",
-            "padding": "10px",
-            "border-radius": "8px",
-            "box-shadow": "2px 2px 5px rgba(0,0,0,0.3)",
-            "font-size": "14px",
-            "z-index": "1000"
-        }
-    )
+    # Horizontal row for Russia and Greenland adaptations, below the main content
+    dbc.Row([
+        dbc.Col(dcc.Markdown(format_country_info("Russia")), width=6, style={'text-align': 'center'}),
+        dbc.Col(dcc.Markdown(format_country_info("Greenland")), width=6, style={'text-align': 'center'})
+    ], className="mt-4", style={
+        "background-color": "rgba(240, 240, 240, 0.9)",
+        "padding": "10px",
+        "border-radius": "8px",
+        "box-shadow": "2px 2px 5px rgba(0,0,0,0.3)"
+    })
 ])
+
 
 @app.callback(
     [Output('country-name', 'children'),
