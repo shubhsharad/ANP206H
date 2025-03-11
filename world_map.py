@@ -1583,7 +1583,7 @@ app.layout = html.Div([
             ])
         ])
     ]),
-    # Horizontal row for Russia and Greenland adaptations, below the main content
+    # Horizontal row for Russia and Greenland adaptations
     dbc.Row([
         dbc.Col(dcc.Markdown(format_country_info("Russia")), width=6, style={'text-align': 'center'}),
         dbc.Col(dcc.Markdown(format_country_info("Greenland")), width=6, style={'text-align': 'center'})
@@ -1592,9 +1592,28 @@ app.layout = html.Div([
         "padding": "10px",
         "border-radius": "8px",
         "box-shadow": "2px 2px 5px rgba(0,0,0,0.3)"
-    })
-])
+    }),
+# References section below the map
+html.Div(
+    children=[
+        dcc.Markdown(
+            """
+            **References**
 
+            Jablonski, N. G. (2004). *The evolution of human skin and skin color*. Annual Review of Anthropology, 33, 585–623. https://doi.org/10.1146/annurev.anthro.33.070203.143955
+
+            Robins, J., & Jablonski, N. (2000). *A reassessment of the evolution of skin pigmentation in modern humans*. American Journal of Human Biology, 12(3), 319–333. https://doi.org/10.1002/ajhb.10012
+
+            Holick, M. F. (2007). *Vitamin D deficiency*. New England Journal of Medicine, 357(3), 266–281. https://doi.org/10.1056/NEJMra070553
+
+            Parra, E. J., Kittles, R. A., & Shriver, M. D. (2004). *Implications of correlations between skin color and genetic ancestry for biomedical research*. Nature Genetics, 36(11), 1124–1130. https://doi.org/10.1038/ng1440
+            """
+        )
+    ],
+    style={'margin': '20px', 'padding': '10px', 'background-color': 'rgba(240,240,240,0.9)', 'border-radius': '8px'}
+)
+
+])
 
 @app.callback(
     [Output('country-name', 'children'),
